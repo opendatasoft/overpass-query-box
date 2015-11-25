@@ -36,7 +36,7 @@ for filename in file_list:
         sys.stderr.write('URL %s returned status code %d\n' % (url, req.status_code))
     else:
 
-        filename_result = filename[:-len(REQUEST_EXTENSION)] + '.csv'
+        filename_result = filename[:-len(REQUEST_EXTENSION)] + '.xml'
         with open('%s/%s' % (results_directory, filename_result), 'w+') as fd:
             fd.write(req.text.encode('utf-8'))
         print("%s done." % filename_result)
