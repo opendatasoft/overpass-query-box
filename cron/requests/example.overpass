@@ -1,4 +1,3 @@
-[out:csv(::"id", ::"lat", ::"lon", "amenity", "name")];
 area[name="Paris"];
 (
   node["amenity"](area);

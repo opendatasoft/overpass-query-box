@@ -43,7 +43,7 @@ for filename in file_list:
 
 print 'Download completed, starting upload on FTP...'
 
-file_list = [each for each in os.listdir(results_directory) if each.endswith('.csv')]
+file_list = [each for each in os.listdir(results_directory) if each.endswith('.xml')]
 ftp = FTP(ftp_server, user=ftp_user, passwd=ftp_password)
 for filename in file_list:
     try:
