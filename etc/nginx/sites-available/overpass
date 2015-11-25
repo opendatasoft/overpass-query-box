@@ -1,0 +1,28 @@
+server {
+        listen 80 default_server;
+        listen [::]:80 default_server ipv6only=on;
+
+        index index.html index.htm;
+
+
+        location /cgi-bin {
+                gzip off;
+                root INSTALL_DIR/exec/;
+                fastcgi_read_timeout 900;
+                fastcgi_pass unix:/var/run/fcgiwrap.socket;
+                include /etc/nginx/fastcgi_params;
+                fastcgi_param SCRIPT_FILENAME  $document_root$fastcgi_script_name;
+        }
+
+        location / {
+                root /var/www/overpass-turbo/build;
+                # First attempt to serve request as file, then
+                # as directory, then fall back to displaying a 404.
+                try_files $uri $uri/ =404;
+                # Uncomment to enable naxsi on this location
+                # include /etc/nginx/naxsi.rules
+
+                # Prevent hidden directories and files access
+                location ~ /\.  { deny all; }
+        }
+}
