@@ -8,6 +8,7 @@ from ftplib import FTP, error_perm, error_reply
 
 API_URL = 'http://localhost/cgi-bin'
 REQUEST_EXTENSION = '.overpass'
+RESPONSE_EXTENSION = '.osm'
 TIMEOUT_MINUTES = 15
 
 if len(sys.argv) < 4:
@@ -36,14 +37,14 @@ for filename in file_list:
         sys.stderr.write('URL %s returned status code %d\n' % (url, req.status_code))
     else:
 
-        filename_result = filename[:-len(REQUEST_EXTENSION)] + '.xml'
+        filename_result = filename[:-len(REQUEST_EXTENSION)] + RESPONSE_EXTENSION
         with open('%s/%s' % (results_directory, filename_result), 'w+') as fd:
             fd.write(req.text.encode('utf-8'))
         print("%s done." % filename_result)
 
 print 'Download completed, starting upload on FTP...'
 
-file_list = [each for each in os.listdir(results_directory) if each.endswith('.xml')]
+file_list = [each for each in os.listdir(results_directory) if each.endswith(RESPONSE_EXTENSION)]
 ftp = FTP(ftp_server, user=ftp_user, passwd=ftp_password)
 for filename in file_list:
     try:
