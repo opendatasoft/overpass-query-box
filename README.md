@@ -23,4 +23,4 @@ and its database
 If you provide FTP credentials to the installation script, a python script will daily run to process Overpass requests and upload responses on a remote server. This script :
 * Fetch all files in INSTALL_DIR/cron/requests which ends with `.overpass`.
 * Pass its content to the Overpass interpreter and get the response.
-* Upload each responses in a separate file on the FTP server. Actually the file will be named as the original request file but the `.overpass` extension will be replaced by '.xml'. It can easily be changed in the INSTALL_DIR/main.py script.
+* Upload each responses in a separate file on the FTP server. Actually the file will be named as the original request file but the `.overpass` extension will be replaced by '.osm'. It can easily be changed in the INSTALL_DIR/main.py script.
