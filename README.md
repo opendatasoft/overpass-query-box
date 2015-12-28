@@ -6,7 +6,8 @@ daemons (required for OSM daily updates, web API, areas generation)
 (localhost) and build it
 * Installs and configure Nginx to use the freshly installed Overpass API
 and Turbo
-* (Optionnal) Installs a crontab which run a python script to daily run Overpass requests and upload responses on a FTP server
+* (Optional) Installs a crontab which run a python script to daily process Overpass requests and upload responses
+on a FTP server
 
 ## Usage
 `Usage : ./install.sh INSTALL_DIR OVERPASS_VERSION [FTP_SERVER FTP_USER FTP_PASSWORD]`
@@ -20,7 +21,10 @@ and its database
 * FTP_PASSWORD (optionnal): The FTP password
 
 ## Daily requests and FTP upload
-If you provide FTP credentials to the installation script, a python script will daily run to process Overpass requests and upload responses on a remote server. This script :
-* Fetch all files in INSTALL_DIR/cron/requests which ends with `.overpass`.
+If you provide FTP credentials to the installation script, a python script will daily run to process Overpass requests
+and upload responses on a remote server. This script :
+* Fetch all files on the remote FTP server in the directory `/requests`
+* Determines which requests to process : It runs every requests every 24 hours, or those which have been modified since
+the last processing
 * Pass its content to the Overpass interpreter and get the response.
-* Upload each responses in a separate file on the FTP server. Actually the file will be named as the original request file but the `.overpass` extension will be replaced by '.osm'. It can easily be changed in the INSTALL_DIR/main.py script.
+* Upload each responses in a separate file on the FTP server.

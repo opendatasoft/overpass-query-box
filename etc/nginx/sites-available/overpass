@@ -6,6 +6,10 @@ server {
 
 
         location /cgi-bin {
+                # Uncomment the following line to restrict API access to localhost.
+                # Overpass turbo interface won't work anymore.
+                #allow 127.0.0.1;
+                #deny all;
                 gzip off;
                 root INSTALL_DIR/exec/;
                 fastcgi_read_timeout 900;

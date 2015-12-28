@@ -109,7 +109,7 @@ service nginx restart
 if [ "$INSTALL_CRON_FTP" = true ] ; then
     cp -r cron "$INSTALL_DIR"
     crontab -l > mycron
-    echo "0 13 * * * $INSTALL_DIR/cron/main.py $INSTALL_DIR/cron/requests $FTP_SERVER $FTP_USER $FTP_PASSWORD"
+    echo "*/5 * * * * $INSTALL_DIR/cron/main.py $FTP_SERVER $FTP_USER $FTP_PASSWORD"
     crontab mycron
     rm mycron
 fi

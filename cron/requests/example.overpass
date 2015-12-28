@@ -1,5 +1,0 @@
-area[name="Paris"];
-(
-  node["amenity"](area);
-);
-out;
