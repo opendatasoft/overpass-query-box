@@ -64,7 +64,7 @@ pushd $INSTALL_DIR
     wget http://planet.openstreetmap.org/planet/planet-latest.osm.bz2
     "$INSTALL_DIR/exec/bin/init_osm3s.sh" "$INSTALL_DIR/planet-latest.osm.bz2"\
         "$INSTALL_DIR/db" "$INSTALL_DIR/exec"
-    rm /planet-latest.osm.bz2
+    rm planet-latest.osm.bz2
 
     # Create crons and start them
     cp -r etc/init etc/init.new
