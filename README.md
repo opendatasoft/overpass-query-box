@@ -1,4 +1,4 @@
-# Overpass-pack
+# Overpass-query-box
 This project contains a main installation script, install.sh. It :
 * Download and build Overpass API, and install few upstart script to run
 daemons (required for OSM daily updates, web API, areas generation)
