@@ -28,3 +28,7 @@ and upload responses on a remote server. This script :
 the last processing
 * Pass its content to the Overpass interpreter and get the response.
 * Upload each responses in a separate file on the FTP server.
+
+## License
+This software is licensed under the MIT license.
+
